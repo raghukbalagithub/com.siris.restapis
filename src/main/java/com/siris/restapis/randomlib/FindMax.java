@@ -1,4 +1,4 @@
-package randomlib;
+package com.siris.restapis.randomlib;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

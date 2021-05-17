@@ -1,8 +1,11 @@
+package com.siris.restapis.randomtests;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.testng.annotations.Test;
-import randomlib.FindMax;
+
+import com.siris.restapis.randomlib.FindMax;
 
 public class FindingMaximum {
     final private Logger LOG = LoggerFactory.getLogger(FindingMaximum.class);
