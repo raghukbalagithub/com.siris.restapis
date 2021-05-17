@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="RootSiftAppender" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <Key>testname</Key>
+            <DefaultValue>testrun</DefaultValue>
+        </discriminator>
+        <sift>
+            <appender name="FILE-${testname}" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <File>TestOutput/${testname}.log</File>
+                <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+                    <FileNamePattern>TestOutput/${testname}.%i.log</FileNamePattern>
+                    <MinIndex>1</MinIndex>
+                    <MaxIndex>100</MaxIndex>
+                </rollingPolicy>
+                <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                    <MaxFileSize>10MB</MaxFileSize>
+                </triggeringPolicy>
+                <layout class="ch.qos.logback.classic.PatternLayout">
+                    <Pattern>%d{ISO8601} %-5level %C{1} [%M:%L] [%thread] - %msg%n</Pattern>
+                </layout>
+            </appender>
+        </sift>
+    </appender>
+    <logger name="com.mobileiron.qa.logger" level="info"/>
+    <logger name="org.springframework.jdbc" level="warn"/>
+    <!--    <logger name="org.apache.http" level="debug"/> -->
+    <!--   <logger name="com.mobileiron.automation.common.io" level="trace"/> -->
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="RootSiftAppender" />
+    </root>
+</configuration>
