@@ -13,5 +13,7 @@ public class FindingMaximum {
 
         FindMax fmObj = new FindMax();
         LOG.info("MAXIMUM OF THE GIVEN 2 NUMBERS: {}", fmObj.findMax(2, 3));
+
+        LOG.warn("WARNING ENABLED");
     }
 }
