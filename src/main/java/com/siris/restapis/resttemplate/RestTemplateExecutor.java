@@ -3,7 +3,7 @@ package com.siris.restapis.resttemplate;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-public class GetRestTemplate {
+public class RestTemplateExecutor {
 
     public RestTemplate getRestTemplate() {
         SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
